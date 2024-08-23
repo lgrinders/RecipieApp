@@ -1,22 +1,22 @@
 export const navLinks = [
   {
-    linkName : "RECIPIES",
-    link : "/",
+    linkName: "HOME",
+    link: "/",
   },
   {
-    linkName : "ABOUT",
-    link : "/",
+    linkName: "ABOUT",
+    link: "/",
   },
   {
-    linkName : "NEWSLETTER",
-    link : "/",
+    linkName: "NEWSLETTER",
+    link: "/",
   },
   {
-    linkName : "COOKBOOK",
-    link : "/",
+    linkName: "COOKBOOK",
+    link: "/",
   },
   {
-    linkName : "FAVORITES",
-    link : "/favorites",
+    linkName: "FAVORITES",
+    link: "/favorites",
   },
 ];

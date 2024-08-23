@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
 import { GiCaesar, GiCarrot } from "react-icons/gi";
 import { navLinks } from "../../assets/navAssets";
 import {
@@ -7,12 +8,16 @@ import {
   FaFacebook,
   FaPinterest,
 } from "react-icons/fa";
+import { GlobalContext } from "../context";
 
 export default function NavBar() {
+  const { searchParam, setSearchParam, handleSubmit } =
+    useContext(GlobalContext);
+
   return (
     <>
       <div className="relative h-20 overflow-x-hidden">
-        <div className="absolute left-0 top-1 flex text-neutral-300">
+        <div className="text-iconGray absolute left-0 top-1 flex">
           {[...Array(150)].map((iconItem, idx) => {
             if (idx % 2 === 0) {
               return <GiCaesar size={14} key={idx} />;
@@ -21,7 +26,7 @@ export default function NavBar() {
           })}
         </div>
 
-        <div className="relative top-7 flex items-center justify-center gap-5 text-xs font-semibold tracking-widest">
+        <div className="relative top-8 flex items-center justify-center gap-7 text-[10px] font-semibold tracking-[3px]">
           <div className="flex gap-5">
             {navLinks.map((linkItem, idx) => {
               return (
@@ -31,25 +36,27 @@ export default function NavBar() {
               );
             })}
           </div>
-          <form>
+          <form onSubmit={handleSubmit}>
             <input
               type="text"
               className="h-4 w-24 rounded-sm border border-black text-center outline-none placeholder:text-center placeholder:text-neutral-500"
               placeholder="SEARCH"
+              value={searchParam}
+              onChange={(e) => setSearchParam(e.target.value)}
             />
           </form>
           <div className="flex gap-5">
             <a href="">
-              <FaInstagram size={20} />
+              <FaInstagram size={16} />
             </a>
             <a href="">
-              <FaPinterest size={20} />
+              <FaPinterest size={16} />
             </a>
             <a href="">
-              <FaTwitter size={20} />
+              <FaTwitter size={16} />
             </a>
             <a href="">
-              <FaFacebook size={20} />
+              <FaFacebook size={16} />
             </a>
           </div>
         </div>
