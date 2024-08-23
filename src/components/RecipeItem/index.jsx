@@ -3,7 +3,7 @@ export default function RecipeItem({ item }) {
 
   return (
     <>
-      <div className="flex w-[450px] flex-col items-center gap-5 pb-20">
+      <div className="flex w-[450px] flex-col items-center gap-5 pb-10">
         <div className="flex flex-col items-center justify-center gap-3">
           <h2 className="text-2xl font-bold">{item.title}</h2>
           <p className="text-center">
@@ -20,7 +20,7 @@ export default function RecipeItem({ item }) {
             className="h-[450px] w-[500px] object-cover object-center"
           />
         </div>
-        <div className="w-full border-b border-iconGray pt-10"></div>
+        <div className="w-full border-b border-iconGray pt-5"></div>
         <div className="w-full border-b border-iconGray"></div>
       </div>
     </>

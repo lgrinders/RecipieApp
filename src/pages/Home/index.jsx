@@ -3,25 +3,21 @@ import { GlobalContext } from "../../components/context";
 import RecipeItem from "../../components/RecipeItem";
 
 export default function Home() {
-  const { recipeList, loading } = useContext(GlobalContext);
+  const { recipeList, loading, status } = useContext(GlobalContext);
 
   if (loading === true) {
     return (
-      <div className="min-h-screen px-10 pt-16 text-neutral-800">
-        <a href="/" className="flex items-center justify-center">
-          <h1 className="font-Gara text-3xl font-bold tracking-widest xl:text-[80px]">
+      <div className="min-h-screen pt-20 text-neutral-800">
+        <a href="/" className="flex items-center justify-center py-20">
+          <h1 className="font-Gara text-6xl font-bold tracking-widest xl:text-[80px]">
             Sunday Salad
           </h1>
-          <p className={`font-semibold sm:hidden`}>recipie app</p>
+          <p className="hidden font-semibold md:block">recipie app</p>
         </a>
-        <div>
-          <div
-            className={`mx-auto flex w-[1200px] justify-center gap-5 overflow-x-hidden p-16`}
-          >
-            {loading ? (
-              <div className="font-Play text-3xl">Loading Please Wait</div>
-            ) : null}
-          </div>
+        <div className="mx-auto flex max-w-[1200px] justify-center">
+          <p className="flex justify-center pt-20 text-center font-Play text-2xl xl:text-3xl">
+            Loading Results
+          </p>
         </div>
       </div>
     );
@@ -30,7 +26,7 @@ export default function Home() {
   return (
     <>
       <div className="min-h-screen pt-20 text-neutral-800">
-        <a href="/" className="flex items-center justify-center">
+        <a href="/" className="flex items-center justify-center py-20">
           <h1 className="font-Gara text-6xl font-bold tracking-widest xl:text-[80px]">
             Sunday Salad
           </h1>
@@ -38,15 +34,14 @@ export default function Home() {
         </a>
         <div className="mx-auto flex max-w-[1200px] justify-center">
           <div
-            className={`${recipeList.length > 0 ? "grid grid-cols-2 gap-10" : "flex justify-center"}`}
+            className={`${recipeList.length > 0 ? "grid grid-cols-1 gap-10 xl:grid-cols-2" : "flex justify-center"}`}
           >
-            {loading ? <div>Loading Please Wait</div> : null}
             {recipeList && recipeList.length > 0 && loading === false ? (
               recipeList.map((item) => <RecipeItem item={item} />)
             ) : (
               <div>
                 <p className="flex justify-center pt-20 text-center font-Play text-2xl xl:text-3xl">
-                  Search from hundreds of recipes
+                  {status}
                 </p>
               </div>
             )}
