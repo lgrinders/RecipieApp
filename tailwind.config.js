@@ -6,6 +6,11 @@ export default {
       colors: {
         iconGray: "#c9c9c9",
       },
+      fontFamily: {
+        Play: "Indie Flower",
+        Gara: "EB Garamond",
+        Basker: "Baskervville SC",
+      },
     },
   },
   plugins: [],

@@ -14,10 +14,12 @@ export default function NavBar() {
   const { searchParam, setSearchParam, handleSubmit } =
     useContext(GlobalContext);
 
+    console.log(searchParam)
+
   return (
     <>
-      <div className="relative h-20 overflow-x-hidden">
-        <div className="text-iconGray absolute left-0 top-1 flex">
+      <div className="fixed h-14 w-screen overflow-x-hidden bg-white">
+        <div className="absolute left-0 top-1 flex text-iconGray">
           {[...Array(150)].map((iconItem, idx) => {
             if (idx % 2 === 0) {
               return <GiCaesar size={14} key={idx} />;
