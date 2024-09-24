@@ -1,17 +1,17 @@
+import NavBar from "./components/navBar/index";
+import Details from "./pages/details/index";
+import Favorites from "./pages/favorites/index";
+import Home from "./pages/home/index";
 import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home/index";
-import NavBar from "./components/NavBar";
-import Favorites from "./pages/Favorites/index";
-import Details from "./pages/Details/index";
 
 export default function App() {
   return (
     <>
       <NavBar />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/favorites" element={<Favorites />} />
-        <Route path="/recipie-item/:id" element={<Details />} />
+        <Route path="/" element={Home} />
+        <Route path="/favorites" element={Favorites} />
+        <Route path="/recipe-item/:id" element={Details} />
       </Routes>
     </>
   );

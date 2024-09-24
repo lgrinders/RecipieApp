@@ -1,3 +1,7 @@
+
+
 export default function Details() {
-  return <>Details</>;
+    return <>
+        <div>Details</div>
+    </>
 }

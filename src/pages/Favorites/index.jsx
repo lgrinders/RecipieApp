@@ -1,3 +1,7 @@
+
+
 export default function Favorites() {
-  return <>Favorites</>;
+    return <>
+        <div>Favorites</div>
+    </>
 }
