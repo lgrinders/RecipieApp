@@ -19,7 +19,7 @@ export default function Home() {
       <div className="flex flex-col items-center gap-5 overflow-x-hidden py-32">
         <button
           onClick={() => setRecipesList([])}
-          className="px-8 text-center font-Bodoni text-7xl font-bold leading-[80px] tracking-[10px] text-stone-800"
+          className="px-8 text-center font-Bodoni text-7xl font-bold leading-[80px] tracking-[10px] text-stone-700"
         >
           SUNDAY SALAD
         </button>
@@ -32,7 +32,7 @@ export default function Home() {
             onChange={(e) => setSearchParam(e.target.value)}
           />
         </form>
-        {recipesList ? (
+        {recipesList.length > 0 ? (
           <div className="flex w-screen items-center justify-center">
             {loading || searchStatus !== "" ? (
               <div className="flex h-20 items-center justify-center px-5 py-5 text-center font-Play text-2xl italic">
