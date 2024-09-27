@@ -10,6 +10,7 @@ export default {
         Play: "Indie Flower",
         Gara: "EB Garamond",
         Basker: "Baskervville SC",
+        Bodoni: "BodoniModal SC",
       },
     },
   },

@@ -7,10 +7,15 @@ import {
   FaFacebook,
   FaPinterest,
 } from "react-icons/fa";
+import { useContext } from "react";
+import { GlobalContext } from "../context";
+
 export default function NavBar() {
+  const { searchParam, setSearchParam } = useContext(GlobalContext);
+
   return (
     <>
-      <div className="relative h-20 overflow-x-hidden">
+      <div className="fixed h-20 w-screen overflow-x-hidden bg-white">
         <div className="absolute left-0 top-1 flex text-neutral-300">
           {[...Array(150)].map((iconItem, idx) => {
             if (idx % 2 === 0) {
@@ -19,8 +24,8 @@ export default function NavBar() {
             return <GiCarrot size={14} key={idx} />;
           })}
         </div>
-        <div className="relative top-8 flex items-center justify-center gap-5 text-[10px] font-semibold tracking-[4px]">
-          <div className="flex gap-5">
+        <div className="relative top-8 flex items-center justify-center gap-0 text-[10px] font-semibold tracking-[4px] md:gap-5">
+          <div className="flex justify-center gap-5">
             {navLinks.map((linkItem, idx) => {
               return (
                 <Link to={linkItem.link} key={idx} className="hover:underline">
@@ -29,14 +34,7 @@ export default function NavBar() {
               );
             })}
           </div>
-          <form>
-            <input
-              type="text"
-              className="h-4 w-28 rounded-sm border border-black text-center outline-none placeholder:text-center placeholder:text-neutral-500"
-              placeholder="SEARCH"
-            />
-          </form>
-          <div className="flex gap-5">
+          <div className="hidden gap-5 lg:flex">
             <a href="">
               <FaInstagram size={16} />
             </a>
