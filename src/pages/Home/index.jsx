@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { GlobalContext } from "../../components/context";
-import { Link } from "react-router-dom";
 import RecipeItem from "../../components/recipeItem/index.jsx";
 
 export default function Home() {
@@ -11,9 +10,9 @@ export default function Home() {
     recipesList,
     setRecipesList,
     loading,
+    searchStatus,
   } = useContext(GlobalContext);
 
-  console.log(recipesList);
 
   return (
     <>
@@ -34,9 +33,9 @@ export default function Home() {
           />
         </form>
         <div className="flex w-screen items-center justify-center">
-          {loading ? (
-            <div className="flex h-20 items-center justify-center py-5 font-Play text-3xl italic">
-              loading please wait
+          {loading || searchStatus !== "" ? (
+            <div className="flex h-20 items-center justify-center px-5 py-5 text-center font-Play text-2xl italic">
+              {loading ? "Loading Please Wait" : searchStatus}
             </div>
           ) : (
             <div className="grid gap-3 px-10 py-3 md:grid-cols-2 md:px-20 xl:grid-cols-3">
