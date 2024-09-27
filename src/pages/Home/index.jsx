@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { GlobalContext } from "../../components/context";
 import RecipeItem from "../../components/recipeItem/index.jsx";
+import DefaultHomeScreen from "../../components/default-home-screen/index.jsx";
 
 export default function Home() {
   const {
@@ -13,10 +14,9 @@ export default function Home() {
     searchStatus,
   } = useContext(GlobalContext);
 
-
   return (
     <>
-      <div className="flex min-h-screen flex-col items-center gap-5 overflow-x-hidden pb-10 pt-32">
+      <div className="flex flex-col items-center gap-5 overflow-x-hidden py-32">
         <button
           onClick={() => setRecipesList([])}
           className="px-8 text-center font-Bodoni text-7xl font-bold leading-[80px] tracking-[10px] text-stone-800"
@@ -32,19 +32,25 @@ export default function Home() {
             onChange={(e) => setSearchParam(e.target.value)}
           />
         </form>
-        <div className="flex w-screen items-center justify-center">
-          {loading || searchStatus !== "" ? (
-            <div className="flex h-20 items-center justify-center px-5 py-5 text-center font-Play text-2xl italic">
-              {loading ? "Loading Please Wait" : searchStatus}
-            </div>
-          ) : (
-            <div className="grid gap-3 px-10 py-3 md:grid-cols-2 md:px-20 xl:grid-cols-3">
-              {recipesList.map((recipeListItem, idx) => {
-                return <RecipeItem recipeListItem={recipeListItem} key={idx} />;
-              })}
-            </div>
-          )}
-        </div>
+        {recipesList ? (
+          <div className="flex w-screen items-center justify-center">
+            {loading || searchStatus !== "" ? (
+              <div className="flex h-20 items-center justify-center px-5 py-5 text-center font-Play text-2xl italic">
+                {loading ? "Loading Please Wait" : searchStatus}
+              </div>
+            ) : (
+              <div className="grid gap-3 px-10 py-3 md:grid-cols-2 md:px-20 xl:grid-cols-3">
+                {recipesList.map((recipeListItem, idx) => {
+                  return (
+                    <RecipeItem recipeListItem={recipeListItem} key={idx} />
+                  );
+                })}
+              </div>
+            )}
+          </div>
+        ) : (
+          <DefaultHomeScreen />
+        )}
       </div>
     </>
   );

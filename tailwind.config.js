@@ -5,6 +5,7 @@ export default {
     extend: {
       colors: {
         iconGray: "#c9c9c9",
+        accentOlive: "#a3b68a",
       },
       fontFamily: {
         Play: "Indie Flower",

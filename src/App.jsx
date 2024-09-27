@@ -1,3 +1,4 @@
+import Footer from "./components/footer";
 import NavBar from "./components/navBar/index";
 import Details from "./pages/details/index";
 import Favorites from "./pages/favorites/index";
@@ -13,6 +14,7 @@ export default function App() {
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/recipe-item/:id" element={<Details />} />
       </Routes>
+      <Footer />
     </>
   );
 }

@@ -19,7 +19,7 @@ export default function RecipeItem({ recipeListItem }) {
 
   return (
     <div className="flex max-w-[400px] flex-col gap-2 bg-white">
-      <h2 className="font-bold text-teal-600 underline">
+      <h2 className="font-bold text-emerald-900 underline">
         {shortenTitle(recipeListItem.title)}
       </h2>
       <p className="h-24 font-Bodoni">{loremText}</p>
