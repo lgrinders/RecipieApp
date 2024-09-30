@@ -7,11 +7,20 @@ import {
   FaFacebook,
   FaPinterest,
 } from "react-icons/fa";
+import { GlobalContext } from "../context";
+import { useContext } from "react";
 
 export default function DefaultHomeScreen() {
+  const { searchStatus } = useContext(GlobalContext);
+
   return (
     <>
-      <div className="flex max-w-[1000px] flex-col  px-5">
+      <div className="flex max-w-[1000px] flex-col items-center px-5">
+        <div
+          className={`${searchStatus === "" ? "hidden" : "block"} text-Stone-700 pb-5 font-Play text-2xl font-bold`}
+        >
+          {searchStatus}
+        </div>
         <div className="flex">
           <div className="flex w-full flex-col gap-3 border-b border-iconGray p-5 text-center md:w-2/3 md:border-r">
             <h2 className="text-2xl font-semibold text-stone-700">
@@ -34,8 +43,8 @@ export default function DefaultHomeScreen() {
           <div className="w-full border-iconGray p-5 md:w-2/3 md:border-r">
             <img src={saladImage} className="" alt="" />
           </div>
-          <div className="hidden items-center gap-8 p-5 md:flex md:w-1/3 md:flex-col">
-            <h2 className="text-accentOlive text-center font-Play text-3xl font-bold">
+          <div className="hidden items-center gap-12 p-5 md:flex md:w-1/3 md:flex-col">
+            <h2 className="text-center font-Play text-3xl font-bold text-accentOlive">
               SEARCH SALADS
             </h2>
             <p className="text-center font-Basker text-[10px] font-semibold tracking-widest text-stone-700">

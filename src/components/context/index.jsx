@@ -7,6 +7,7 @@ export default function GlobalState({ children }) {
   const [loading, setLoading] = useState(false);
   const [recipesList, setRecipesList] = useState([]);
   const [searchStatus, setSearchStatus] = useState("");
+  const [recipeDetailsData, setRecipeDetailsData] = useState([]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -17,7 +18,6 @@ export default function GlobalState({ children }) {
         `https://forkify-api.herokuapp.com/api/v2/recipes?search=${searchParam}`,
       );
       const result = await promise.json();
-
       if (result.data.recipes.length < 1) {
         setSearchStatus("Nothing found for that ingredient! Try another one!");
       } else {
@@ -55,6 +55,9 @@ export default function GlobalState({ children }) {
         recipesList,
         setRecipesList,
         searchStatus,
+        recipeDetailsData,
+        setRecipeDetailsData,
+        setSearchStatus,
       }}
     >
       {children}
