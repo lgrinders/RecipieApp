@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const GlobalContext = createContext(null);
 
@@ -8,6 +8,20 @@ export default function GlobalState({ children }) {
   const [recipesList, setRecipesList] = useState([]);
   const [searchStatus, setSearchStatus] = useState("");
   const [recipeDetailsData, setRecipeDetailsData] = useState([]);
+  const [favorites, setFavorites] = useState(() => {
+    let currentValue;
+    try {
+      currentValue = JSON.parse(localStorage.getItem("favorites"));
+    } catch (error) {
+      console.log(error);
+      currentValue = [];
+    }
+    return currentValue;
+  });
+
+  useEffect(() => {
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  }, [favorites]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -58,6 +72,8 @@ export default function GlobalState({ children }) {
         recipeDetailsData,
         setRecipeDetailsData,
         setSearchStatus,
+        favorites,
+        setFavorites,
       }}
     >
       {children}

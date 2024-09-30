@@ -1,6 +1,8 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { GlobalContext } from "../../components/context";
+import { FaRegStar } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
 
 export default function Details() {
   const { id } = useParams();
@@ -11,7 +13,10 @@ export default function Details() {
     searchParam,
     setSearchParam,
     setRecipesList,
+    favorites,
+    setFavorites,
   } = useContext(GlobalContext);
+  const [isStarHovered, setIsStarHovered] = useState(false);
 
   useEffect(() => {
     const getRecipeDetails = async () => {
@@ -25,6 +30,15 @@ export default function Details() {
     };
     getRecipeDetails();
   }, [id]);
+
+  const handleFavorites = () => {
+    let cpyFavs = [...favorites];
+    let idx = cpyFavs.indexOf(recipeDetailsData);
+    idx === -1
+      ? (cpyFavs = [...cpyFavs, recipeDetailsData])
+      : cpyFavs.splice(idx, 1);
+    setFavorites(cpyFavs);
+  };
 
   return (
     <>
@@ -52,21 +66,58 @@ export default function Details() {
           <h2 className="font-Basker text-4xl font-bold text-stone-700">
             {recipeDetailsData?.title}
           </h2>
-          <img
-            src={recipeDetailsData?.image_url}
-            alt={recipeDetailsData?.title}
-          />
-          <div>
-            <h2>Publisher: {recipeDetailsData?.publisher}</h2>
-            <h2>Ingredients:</h2>
-            <ul>
-              {recipeDetailsData?.ingredients?.map((item, idx) => (
-                <li key={idx}>
-                  {item.quantity ? `${item.quantity} ` : ""}
-                  {item.unit} - {item.description}
-                </li>
-              ))}
-            </ul>
+
+          <div className="flex">
+            <div className="flex flex-col gap-5 border-r border-t border-iconGray p-5">
+              <img
+                src={recipeDetailsData?.image_url}
+                alt={recipeDetailsData?.title}
+              />
+            </div>
+            <div className="border-t border-iconGray p-5">
+              <div
+                onMouseEnter={() => setIsStarHovered(true)}
+                onMouseLeave={() => setIsStarHovered(false)}
+                className="text-yellow-500"
+                onClick={handleFavorites}
+              >
+                {isStarHovered || favorites.includes(recipeDetailsData) ? (
+                  <FaStar size={50} />
+                ) : (
+                  <FaRegStar size={50} />
+                )}
+              </div>
+            </div>
+          </div>
+          <div className="flex max-w-[400px] flex-col gap-5 text-lg">
+            <div className="flex gap-2">
+              <h2 className="font-bold">Publisher:</h2>{" "}
+              {recipeDetailsData?.publisher}
+            </div>
+            <div className="flex flex-col gap-2">
+              <p className="font-bold">Link to recipe source:</p>
+              <a href={recipeDetailsData?.source_url} className="italic">
+                {recipeDetailsData?.source_url}
+              </a>
+            </div>
+            <div className="flex flex-col gap-5">
+              <h2 className="font-bold">Ingredients and info:</h2>
+              <ul className="flex flex-col gap-2">
+                {recipeDetailsData?.ingredients?.map((item, idx) => (
+                  <li key={idx}>
+                    {item.quantity} {item.unit} {item.description}
+                  </li>
+                ))}
+              </ul>
+              <div className="flex gap-2">
+                <p className="font-bold">Servings:</p>{" "}
+                {recipeDetailsData?.servings}
+              </div>
+              <div className="flex gap-2">
+                <p className="font-bold">Cooking Time:</p>{" "}
+                {recipeDetailsData?.cooking_time}
+              </div>
+            </div>
           </div>
         </div>
       </div>
