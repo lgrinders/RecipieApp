@@ -75,13 +75,13 @@ export default function NavBar() {
       </div>
       <div
         ref={sideNavRef}
-        className={`fixed left-0 top-0 z-20 h-screen w-64 transform bg-white shadow-2xl transition-all duration-300 ease-in-out ${
+        className={`fixed left-0 top-0 z-20 flex h-screen w-64 transform flex-col items-center justify-center bg-white shadow-2xl transition-all duration-300 ease-in-out ${
           navShowing
             ? "translate-x-0 opacity-100"
             : "-translate-x-full opacity-0"
         }`}
       >
-        <div className="flex h-full flex-col items-center justify-center gap-10">
+        <div className="flex flex-col items-center justify-center gap-10">
           <div className="flex flex-col items-center gap-10">
             {navLinks.map((linkItem, idx) => {
               return (
