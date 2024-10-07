@@ -6,10 +6,10 @@ export default function FavoritesItem({ favoritesItem }) {
 
   return (
     <Link
-      className="flex flex-col items-center gap-2 bg-white p-5 shadow-xl"
+      className="flex flex-col items-center gap-2 bg-white p-5 border border-iconGray"
       to={`/recipe-item/${favoritesItem?.id}`}
     >
-      <h2 className="font-bold text-emerald-900 hover:text-emerald-700 underline">
+      <h2 className="font-bold text-emerald-900 underline hover:text-emerald-700">
         {shortenTitle(favoritesItem.title)}
       </h2>
       <img

@@ -9,14 +9,12 @@ export default function Details() {
   const {
     recipeDetailsData,
     setRecipeDetailsData,
-    handleSubmit,
-    searchParam,
-    setSearchParam,
     setRecipesList,
     favorites,
     setFavorites,
   } = useContext(GlobalContext);
   const [isStarHovered, setIsStarHovered] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
     const getRecipeDetails = async () => {
@@ -30,14 +28,25 @@ export default function Details() {
     };
     getRecipeDetails();
   }, [id]);
+  useEffect(() => {
+    if (recipeDetailsData) {
+      const isAlreadyFavorite = favorites.some(
+        (fav) => fav.id === recipeDetailsData.id,
+      );
+      setIsFavorite(isAlreadyFavorite);
+    }
+  }, [recipeDetailsData, favorites]);
 
   const handleFavorites = () => {
     let cpyFavs = [...favorites];
-    let idx = cpyFavs.indexOf(recipeDetailsData);
-    idx === -1
-      ? (cpyFavs = [...cpyFavs, recipeDetailsData])
-      : cpyFavs.splice(idx, 1);
+    let idx = cpyFavs.findIndex((fav) => fav.id === recipeDetailsData.id);
+    if (idx === -1) {
+      cpyFavs = [...cpyFavs, recipeDetailsData];
+    } else {
+      cpyFavs.splice(idx, 1);
+    }
     setFavorites(cpyFavs);
+    setIsFavorite(!isFavorite);
   };
 
   return (
@@ -52,22 +61,13 @@ export default function Details() {
         >
           SUNDAY SALAD
         </Link>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            className="mb-10 h-8 w-[300px] rounded-sm border border-black px-2 text-center text-[10px] font-semibold tracking-[4px] outline-none placeholder:text-center placeholder:text-neutral-500 md:w-[550px]"
-            placeholder="SEARCH FOR AN INGREDIENT"
-            value={searchParam}
-            onChange={(e) => setSearchParam(e.target.value)}
-          />
-        </form>
 
         <div className="flex flex-col items-center justify-center gap-5">
-          <h2 className="font-Basker text-4xl font-bold text-stone-700">
+          <h2 className="font-Basker text-4xl font-bold text-stone-700 text-center">
             {recipeDetailsData?.title}
           </h2>
 
-          <div className="flex">
+          <div className="flex px-5">
             <div className="flex flex-col gap-5 border-r border-t border-iconGray p-5">
               <img
                 src={recipeDetailsData?.image_url}
@@ -81,7 +81,7 @@ export default function Details() {
                 className="text-yellow-500"
                 onClick={handleFavorites}
               >
-                {isStarHovered || favorites.includes(recipeDetailsData) ? (
+                {isStarHovered || isFavorite ? (
                   <FaStar size={50} />
                 ) : (
                   <FaRegStar size={50} />
@@ -89,7 +89,7 @@ export default function Details() {
               </div>
             </div>
           </div>
-          <div className="flex max-w-[400px] flex-col gap-5 text-lg">
+          <div className="flex max-w-[400px] flex-col gap-5 text-lg px-5">
             <div className="flex gap-2">
               <h2 className="font-bold">Publisher:</h2>{" "}
               {recipeDetailsData?.publisher}

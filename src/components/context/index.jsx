@@ -25,13 +25,16 @@ export default function GlobalState({ children }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     setSearchParam("");
     try {
       setLoading(true);
       const promise = await fetch(
         `https://forkify-api.herokuapp.com/api/v2/recipes?search=${searchParam}`,
       );
+
       const result = await promise.json();
+
       if (result.data.recipes.length < 1) {
         setSearchStatus("Nothing found for that ingredient! Try another one!");
       } else {
@@ -40,13 +43,27 @@ export default function GlobalState({ children }) {
 
       const filteredRecipes = await Promise.all(
         result.data.recipes.map(async (recipe) => {
-          const img = new Image();
-          img.src = recipe.image_url;
-          return img.height >= 450 ? recipe : null;
+          try {
+            const img = new Image();
+            img.src = recipe.image_url;
+
+            await new Promise((resolve, reject) => {
+              img.onload = resolve;
+              img.onerror = reject;
+            });
+
+            return img.height >= 450 ? recipe : null;
+          } catch (error) {
+            console.error(
+              `Image blocked or failed to load for: ${recipe.title}`,
+              error,
+            );
+            return null;
+          }
         }),
       );
 
-      const validRecipes = filteredRecipes.filter((recipe) => recipe !== null);
+      const validRecipes = filteredRecipes?.filter((recipe) => recipe !== null);
 
       setRecipesList(validRecipes);
 
@@ -54,7 +71,7 @@ export default function GlobalState({ children }) {
         setLoading(false);
       }, 500);
     } catch (e) {
-      console.log(e);
+      console.error("Error occurred:", e);
       setLoading(false);
     }
   };
