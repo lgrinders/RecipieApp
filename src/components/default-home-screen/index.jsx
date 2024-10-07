@@ -1,4 +1,4 @@
-import saladImage from "../../assets/images/saladImage.jpg";
+import fatoush from "../../assets/images/fatoush.jpg";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import couple from "../../assets/images/couple.jpeg";
 import {
@@ -41,7 +41,7 @@ export default function DefaultHomeScreen() {
         </div>
         <div className="flex">
           <div className="w-full border-iconGray p-5 md:w-2/3 md:border-r">
-            <img src={saladImage} className="" alt="" />
+            <img src={fatoush} alt="salad image" />
           </div>
           <div className="hidden items-center gap-12 p-5 md:flex md:w-1/3 md:flex-col">
             <h2 className="text-center font-Play text-3xl font-bold text-accentOlive">
