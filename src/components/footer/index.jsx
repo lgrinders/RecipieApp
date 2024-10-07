@@ -12,7 +12,7 @@ import { footerLinks } from "../../assets/footerAssets";
 export default function Footer() {
   return (
     <>
-      <div className="text-accentOlive relative h-3 w-full items-end overflow-x-hidden bg-white">
+      <div className="relative h-3 w-full items-end overflow-x-hidden bg-white text-accentOlive">
         <div className="absolute -bottom-0.5 flex">
           {[...Array(150)].map((iconItem, idx) => {
             if (idx % 2 === 0) {
@@ -22,7 +22,7 @@ export default function Footer() {
           })}
         </div>
       </div>
-      <div className="bg-accentOlive flex w-full flex-col gap-10 py-5 pt-10 xl:px-64">
+      <div className="flex w-full flex-col gap-10 bg-accentOlive py-5 pt-10 xl:px-64">
         <div className="flex justify-center gap-7 text-white">
           <a href="">
             <FaInstagram size={30} />
@@ -67,7 +67,7 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="flex justify-center gap-5 font-semibold">
+        <div className="flex flex-wrap justify-center gap-2 px-5 text-center font-semibold sm:gap-5">
           {footerLinks.map((linkItem, idx) => {
             return (
               <Link
@@ -80,7 +80,7 @@ export default function Footer() {
             );
           })}
         </div>
-        <div className="flex items-center justify-center font-Gara text-xs font-semibold tracking-widest text-white">
+        <div className="flex items-center justify-center text-center font-Gara text-xs font-semibold tracking-widest text-white">
           Copyriht @ 2024 Sunday Salad, LLC. All right reserved
         </div>
       </div>

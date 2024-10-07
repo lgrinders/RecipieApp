@@ -22,7 +22,7 @@ export default function Home() {
           onClick={() => {
             setRecipesList([]), setSearchStatus("");
           }}
-          className="px-8 text-center font-Bodoni text-7xl font-bold leading-[80px] tracking-[10px] text-stone-700"
+          className="px-8 text-center font-Bodoni sm:text-7xl font-bold leading-[80px] tracking-[10px] text-stone-700 text-6xl"
         >
           SUNDAY SALAD
         </button>
