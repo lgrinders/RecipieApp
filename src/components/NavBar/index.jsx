@@ -8,7 +8,7 @@ import {
   FaPinterest,
 } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { GlobalContext } from "../context";
 import useOutsideClick from "../use-outside-click";
 
@@ -16,7 +16,19 @@ export default function NavBar() {
   const { setRecipesList } = useContext(GlobalContext);
   const [navShowing, setNavShowing] = useState(false);
   const sideNavRef = useRef();
-  useOutsideClick(sideNavRef, () => setNavShowing(false));
+  const hamburgerMenuRef = useRef();
+
+  useOutsideClick(sideNavRef, (e) => {
+    // Check if the click was on either the hamburger menu or the sideNav
+    if (
+      (hamburgerMenuRef.current &&
+        hamburgerMenuRef.current.contains(e.target)) ||
+      (sideNavRef.current && sideNavRef.current.contains(e.target))
+    ) {
+      return;
+    }
+    setNavShowing(false);
+  });
 
   return (
     <>
@@ -63,7 +75,11 @@ export default function NavBar() {
             </a>
           </div>
         </div>
-        <div className="relative top-8 flex justify-end px-5 sm:hidden">
+        <div
+          className="relative top-8 flex justify-end px-5 sm:hidden"
+          ref={hamburgerMenuRef}
+          id="hamburgerBar"
+        >
           <GiHamburgerMenu
             size={20}
             className={`transition-transform duration-300 ease-in-out ${
@@ -80,6 +96,7 @@ export default function NavBar() {
             ? "translate-x-0 opacity-100"
             : "-translate-x-full opacity-0"
         }`}
+        id="sideNav"
       >
         <div className="flex flex-col items-center justify-center gap-10">
           <div className="flex flex-col items-center gap-10">

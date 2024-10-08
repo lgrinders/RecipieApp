@@ -51,7 +51,7 @@ export default function DefaultHomeScreen() {
               BREAKFAST / MAIN-DISH / DESSERT / VEGAN / GLUTEN FREE
             </p>
             <button className="flex items-center justify-center gap-2 p-2 font-Bodoni font-bold text-stone-700">
-              <FaChevronRight /> <FaChevronRight /> ALL RECIPES{" "}
+              <FaChevronRight /> <FaChevronRight /> ALL RECIPES
               <FaChevronLeft /> <FaChevronLeft />
             </button>
             <img
