@@ -19,7 +19,6 @@ export default function NavBar() {
   const hamburgerMenuRef = useRef();
 
   useOutsideClick(sideNavRef, (e) => {
-    // Check if the click was on either the hamburger menu or the sideNav
     if (
       (hamburgerMenuRef.current &&
         hamburgerMenuRef.current.contains(e.target)) ||
@@ -105,11 +104,12 @@ export default function NavBar() {
                 <Link
                   to={linkItem.link}
                   key={idx}
-                  onClick={
-                    linkItem.linkName === "RECIPIES"
-                      ? () => setRecipesList([])
-                      : null
-                  }
+                  onClick={() => {
+                    if (linkItem.linkName === "RECIPIES") {
+                      setRecipesList([]); // Reset recipesList if link is "RECIPIES"
+                    }
+                    setNavShowing(false); // Close the navigation menu
+                  }}
                   className="hover:underline"
                 >
                   {linkItem.linkName}
