@@ -17,7 +17,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="flex flex-col items-center gap-5 overflow-x-hidden py-32">
+      <div className="flex flex-col items-center gap-5 overflow-x-hidden py-24">
         <button
           onClick={() => {
             setRecipesList([]), setSearchStatus("");

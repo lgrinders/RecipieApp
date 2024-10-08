@@ -8,7 +8,7 @@ export default function Favorites() {
 
   return (
     <>
-      <div className="flex min-h-[800px] flex-col items-center gap-5 overflow-x-hidden py-32">
+      <div className="flex min-h-[800px] flex-col items-center gap-5 overflow-x-hidden py-24">
         <Link
           onClick={() => {
             setRecipesList([]), setSearchStatus("");

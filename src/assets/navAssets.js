@@ -1,6 +1,6 @@
 export const navLinks = [
   {
-    linkName: "RECIPIES",
+    linkName: "HOME",
     link: "/",
   },
   {

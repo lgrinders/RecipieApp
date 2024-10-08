@@ -31,7 +31,7 @@ export default function NavBar() {
 
   return (
     <>
-      <div className="fixed h-20 w-screen overflow-x-hidden bg-white">
+      <div className="fixed h-14 w-screen overflow-x-hidden bg-white">
         <div className="absolute left-0 top-1 flex text-neutral-300">
           {[...Array(150)].map((iconItem, idx) => {
             if (idx % 2 === 0) {
@@ -75,7 +75,7 @@ export default function NavBar() {
           </div>
         </div>
         <div
-          className="relative top-8 flex justify-end px-5 sm:hidden"
+          className="relative top-8 flex justify-end px-10 sm:hidden"
           ref={hamburgerMenuRef}
           id="hamburgerBar"
         >
@@ -106,9 +106,9 @@ export default function NavBar() {
                   key={idx}
                   onClick={() => {
                     if (linkItem.linkName === "RECIPIES") {
-                      setRecipesList([]); // Reset recipesList if link is "RECIPIES"
+                      setRecipesList([]);
                     }
-                    setNavShowing(false); // Close the navigation menu
+                    setNavShowing(false);
                   }}
                   className="hover:underline"
                 >

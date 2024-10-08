@@ -9,6 +9,7 @@ import {
 } from "react-icons/fa";
 import { GlobalContext } from "../context";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 
 export default function DefaultHomeScreen() {
   const { searchStatus } = useContext(GlobalContext);
@@ -41,7 +42,15 @@ export default function DefaultHomeScreen() {
         </div>
         <div className="flex">
           <div className="w-full border-iconGray p-5 md:w-2/3 md:border-r">
-            <img src={fatoush} alt="salad image" />
+            <Link
+              to={"http://localhost:5173/recipe-item/664c8f193e7aa067e94e89ee"}
+            >
+              <img
+                src={fatoush}
+                alt="salad image"
+                className="h-[700px] object-cover duration-200 hover:shadow-2xl"
+              />
+            </Link>
           </div>
           <div className="hidden items-center gap-12 p-5 md:flex md:w-1/3 md:flex-col">
             <h2 className="text-center font-Play text-3xl font-bold text-accentOlive">
@@ -50,10 +59,7 @@ export default function DefaultHomeScreen() {
             <p className="text-center font-Basker text-[10px] font-semibold tracking-widest text-stone-700">
               BREAKFAST / MAIN-DISH / DESSERT / VEGAN / GLUTEN FREE
             </p>
-            <button className="flex items-center justify-center gap-2 p-2 font-Bodoni font-bold text-stone-700">
-              <FaChevronRight /> <FaChevronRight /> ALL RECIPES
-              <FaChevronLeft /> <FaChevronLeft />
-            </button>
+
             <img
               src={couple}
               alt="A couple cooking together"
