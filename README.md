@@ -2,7 +2,7 @@
 <p>This is a easy to use and clean recipe search website.</p>
 <h2>Features</h2>
 <ul>
-  <li>Search an ingredient and recieve recipies with that ingredient in it.</li>
+  <li>Search an ingredient and receive recipes with that ingredient in it.</li>
   <li>Searches have been filtered to only include high quality images.</li>
   <li>Save recipes that you like to your favorites.</li>
   <li>Access to your favorites on page refresh.</li>
