@@ -11,7 +11,7 @@ export default function RecipeItem({ recipeListItem }) {
 
   const randomLorem = () => {
     const lorem =
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed asperiores nulla recusandae error aliquid modi sapiente necessitatibus, explicabo adipisci. Quod pariatur provident repellendus iure aliquid culpa voluptates quidem possimus atque?";
+      "Lorem ipsum dolor, si amet consectetur adipisicing elit. Sed asperiores nulla recusandae error aliquid modi sapiente necessitatibus, explicabo adipisci. Quod pariatur provident repellendus iure aliquid culpa voluptates quidem possimus atque?";
     const words = Math.floor(Math.random() * 15) + 10;
     return lorem.split(" ").slice(0, words).join(" ") + ".";
   };
