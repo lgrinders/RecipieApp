@@ -10,7 +10,7 @@ export default function App() {
     <>
       <NavBar />
       <Routes>
-        <Route path="/https://lgrinders.github.io/RecipeApp-Sunday-Salad/" element={<Home />} />
+        <Route path="/lgrinders.github.io/RecipeApp-Sunday-Salad/" element={<Home />} />
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/recipe-item/:id" element={<Details />} />
       </Routes>
