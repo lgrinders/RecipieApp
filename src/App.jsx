@@ -1,8 +1,8 @@
 import Footer from "./components/footer";
-import NavBar from "./components/navBar/index";
-import Details from "./pages/details/index";
-import Favorites from "./pages/favorites/index";
-import Home from "./pages/home/index";
+import NavBar from "./components/NavBar/index";
+import Details from "./pages/Details/index";
+import Favorites from "./pages/Favorites/index";
+import Home from "./pages/Home/index";
 import { Routes, Route } from "react-router-dom";
 
 export default function App() {
