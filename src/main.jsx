@@ -6,7 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import GlobalState from "./components/context/index.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <BrowserRouter basename="/RecipeApp-Sunday-Salad">
+  <BrowserRouter basename="/RecipeApp-Sunday-Salad/">
     <GlobalState>
       <App />
     </GlobalState>

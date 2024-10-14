@@ -48,7 +48,7 @@ export default function NavBar() {
                   to={linkItem.link}
                   key={idx}
                   onClick={
-                    linkItem.linkName === "RECIPIES"
+                    linkItem.linkName === "HOME"
                       ? () => setRecipesList([])
                       : null
                   }

@@ -43,7 +43,7 @@ export default function DefaultHomeScreen() {
         <div className="flex">
           <div className="w-full border-iconGray p-5 md:w-2/3 md:border-r">
             <Link
-              to={"http://localhost:5173/recipe-item/664c8f193e7aa067e94e89ee"}
+              to={"/recipe-item/664c8f193e7aa067e94e89ee"}
             >
               <img
                 src={fatoush}
